@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import {connection} from './config/db.js'
+import './config/install.js'
 
 // config .env
 dotenv.config();

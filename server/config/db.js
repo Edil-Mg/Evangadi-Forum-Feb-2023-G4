@@ -11,7 +11,7 @@ const host = 'localhost';
 const database = 'EvangadiForem2';
 const user = 'root';
 const password = '1234';
-console.log(port);
+// console.log(port);
 
 export const connection = mysql.createConnection({
      host,
