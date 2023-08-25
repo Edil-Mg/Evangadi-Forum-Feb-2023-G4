@@ -4,6 +4,9 @@ import bcrypt from 'bcryptjs';
 //Importing database structure 
 import {connection} from '../../config/db.js';
 import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const userController = {
   createUser: (req, res) => {
@@ -89,7 +92,7 @@ const userController = {
             }
             return res.status(200).json({ data: results });
         })
-  },
+    },
     
     getUserById: (req, res) => {
         userService.userById(req.id, (err, results) => {
@@ -138,7 +141,48 @@ const userController = {
                 }
             })
         })
-    }
+   },
+  forgetPassword: (req, res) => { 
+    const { email } = req.body;
+    console.log(email);
+    // check the email is alredy taken
+    
+    connection.query('SELECT * FROM registration WHERE user_email = ?',
+      [email],
+      (err, results) => {
+        if (err) {
+          return res
+            .status(err)
+            .json({ msg: "database connection err during email checking" })
+        }
+        if (results.length == 0) {
+          return res
+            .status(400)
+            .json({ msg: "no account with this email" });
+        }
+      
+         
+          
+         //  sending code
+         let v_code = generateRandomSixDigitNumber();
+          sendEmail(email, v_code);
+          res.send(`code sent to your email`);
+         
+          let v_data = {
+            email,
+            v_code,
+          }
+           console.log(v_data);
+
+
+
+        
+
+
+      })
+
+  } ,
+    
 }
 
 const validatePassword = (password)=> {
@@ -185,12 +229,46 @@ const  generateRandomTwoDigitNumber =()=> {
   return Math.floor(Math.random() * 90 + 10);
 }
 
+const generateRandomSixDigitNumber = () => {
+  return Math.floor(Math.random() * 900000 + 100000);
+};
+
+
+
+
+
+
 
 export default userController;
 
 
 
 
+// Function to send email 
+const sendEmail = async (user_email,v_code) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL,
+        pass: process.env.EMAIL_PASSWORD,
+      },
+    });
 
+    const mailOptions = {
+      from: process.env.EMAIL,
+      to: user_email,
+      subject: 'text',
+      text: `your evangadi verification code is ${v_code}`,
+     
+    };
+
+    await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully!');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw error;
+  }
+};
 
 
