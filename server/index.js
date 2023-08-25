@@ -4,6 +4,12 @@ import dotenv from 'dotenv';
 import {connection} from './config/db.js'
 import './config/install.js'
 
+// routing 
+import usersRouter from "./api/users/users.route.js"
+import answersRouter from "./api/answers/answers.route.js";
+import questionsRouter from "./api/questions/questions.route.js";
+import replaysRouter from "./api/replays/replays.route.js";
+import reactionsRouter from "./api/reactions/reactions.route.js";
 
 // config .env
 dotenv.config();
@@ -19,6 +25,12 @@ server.use(cors());
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
+//routes
+server.use("/api/users", usersRouter);
+server.use("/api/answers", answersRouter);
+server.use("/api/questions", questionsRouter);
+server.use("/api/replays", replaysRouter);
+server.use("/api/reactions", reactionsRouter);
 
 server.get('/', (req, res) => { 
     res.send(`<h1>working ... </h1>`);
