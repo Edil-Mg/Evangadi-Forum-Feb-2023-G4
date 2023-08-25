@@ -80,7 +80,7 @@ const userController = {
         })
         },
     getUsers: (req, res) => {
-        getAllUsers((err, results) => {
+         userService.getAllUsers((err, results) => {
             if (err) {
                 console.log(err);
                 return res
@@ -129,7 +129,7 @@ const userController = {
                 return res
                     .status(404)
                     .json({ msg: "Invalid Credentials incorrect password" })
-            const token = jwt.sign({ id: results.user_id, username: results.user_name }, process.env.JWT_SECRET, { expiresIn: "1m" });
+            const token = jwt.sign({ id: results.user_id, username: results.user_name }, process.env.JWT_SECRET, { expiresIn: "30m" });
             return res.json({
                 token,
                 user: {

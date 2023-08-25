@@ -45,7 +45,7 @@ const userService = {
         })
     },
     userById: (id, callback) => {
-        connection.query(`SELECT registration.user_id,user_name,user_email,first_name,last_name FROM registration LEFT JOIN profile ON registration.user_id = profile.user_id WHERE registration.user_id = ?`, [id], (err, result) => {
+        connection.query(`SELECT registration.user_id,user_name,user_email,first_name,middle_name,last_name,other_name FROM registration LEFT JOIN profile ON registration.user_id = profile.user_id WHERE registration.user_id = ?`, [id], (err, result) => {
             if (err) {
                 return callback(err);
             }
