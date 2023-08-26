@@ -30,8 +30,10 @@ const userController = {
     
        
         // validate password using regular expression
-        const validationResult = validatePassword(password);
-        if (!validationResult)
+          const validationResult = validatePassword(password);
+          console.log(validationResult);
+          console.log(validationResult.valid);
+        if (!validationResult.valid)
             return res
                 .status(400)
                 .json({ msg:  validationResult.errors})
