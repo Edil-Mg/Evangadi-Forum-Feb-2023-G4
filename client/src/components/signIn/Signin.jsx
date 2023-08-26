@@ -1,8 +1,74 @@
-import React from 'react'
-import { Link} from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {useStateValue} from '../../utility/stateprovider'
 import './signin.css'
+import axios from 'axios';
 
 const Signin = () => {
+  const [{user }, dispatch] = useStateValue();
+  const [form, setForm] = useState({});
+  const [errors, setError] = useState({});
+  const [auth, setAuth] = useState(false);
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
+   const setField = (field, value) => {
+    setForm({
+      ...form,
+      [field]: value,
+    });
+
+    if (errors[field]) {
+      setError({
+        ...errors,
+        [field]: null,
+      });
+    }
+  };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+        if (1) {
+    // if (validateForm()) {
+      try {
+        axios.defaults.withCredentials = true;
+        const response = await axios.post(`http://localhost:4500/api/users/login`,form);
+        const data = response.data;
+       
+
+        // console.log(data.token);
+        // console.log(data.user['id']);
+        // console.log(data.user['userName']);
+
+          if (data) {
+            dispatch({
+              type: "SET_USER",
+              user: {
+                token: data.token,
+                user: {
+                  id: data.user['id'],
+                  username: data.user['userName'],
+                }
+
+              },
+            });
+          }
+        
+          console.log(user);
+        
+     
+        
+      } catch (error) {
+        alert("Error authenticating user");
+      console.log('Error authenticating user:', error.message);
+      setError({
+        ...errors,
+        pass: 'Network Error: Unable to reach the server',
+      });
+      }
+    }
+  };
+
 
 
   
@@ -17,18 +83,19 @@ const Signin = () => {
               Create a new account
             </Link>
           </p>
-          <form >
+          <form onSubmit={handleSubmit}>
             <input
               className="in1"
               type="email"
               name="email"
-              // onChange={handleChange}
+              onChange={(e) => setField('email', e.target.value)}
               placeholder="Your Email"
             />
             <input
               className="in1"
               name="password"
-              // onChange={handleChange}
+              type="password"
+              onChange={(e) => setField('password', e.target.value)}
               placeholder="Your Password"
             />
             <span  className="showHide2">

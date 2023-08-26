@@ -1,5 +1,4 @@
 export const initialState = {
-  basket: [],
   user: null,
 };
 
@@ -9,8 +8,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: {
-          email: action.email,
-            uid: action.userId,
+          token: action.user.token,
+          user: {
+            id: action.user.user.id,
+            username: action.user.user.username,
+          },
         },
       };
 

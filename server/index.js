@@ -21,7 +21,15 @@ const host = process.env.SERVER_HOST;
 const server = express();
 
 //middleware
-server.use(cors());
+server.use(cors({
+    origin: (origin, callback) => {
+        // Allow requests from any origin
+        callback(null, true);
+    },
+    credentials: true // Allow credentials (cookies) to be sent
+}));
+
+
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
