@@ -16,19 +16,21 @@ import Signup from './components/signup/Signup';
 import Signin from './components/signIn/Signin';
 import Forget_password from './components/forget_password/Forget_password';
 import Code_enter from './components/forget_password/Code_enter';
+import NewPassword from './components/forget_password/newPassword'
 function App() {
-
+///newPassword
 
   return (
     <div className="App">
 
-      <Header />
+      
       <Routes>
-        <Route path='/' element={<><Home /></>} />
+        <Route path='/' element={<><Header /> <Home /></>} />
         <Route path='/forgetpassword' element={<><Forget_password /></>} />
         <Route path='/code' element={<><Code_enter /></>} />
+        <Route path='/newPassword' element={<><NewPassword /></>} />
         <Route path='/login' element={<>
-                                <Signin />
+                               <Header /> <Signin />
         </>} />
         <Route path='/signup' element={<>
                                 <Signup />
@@ -38,11 +40,11 @@ function App() {
                                 <Landing />
                               </>} />
         <Route path='/profile' element={<>
-                                <Profile />
+                                <Header /><Profile />
                               </>} />
 
         <Route path='/questionandanswer' element={<>
-                                <Question_and_answer />
+                                <Header /><Question_and_answer />
                               </>} />
 
       </Routes>

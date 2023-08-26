@@ -1,8 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {useStateValue} from '../../utility/stateprovider'
 import './header.css'
 
+
 const Header = () => {
+const [{user }, dispatch] = useStateValue();
+const navigate = useNavigate();
+  useEffect(() => {
+    if (user==null) { 
+      navigate('/login');
+    }
+    console.log(user);
+
+  }, [navigate])  
+  
+
+  const handlelogout = () => { 
+          dispatch({
+              type: "SET_USER",
+              user: { },
+            });
+          navigate('/login')
+          //location.reload(true);
+       
+  }
+
+
   return (
     <div className='header container-fluid m-3 p-3'>
       <div className="container d-flex subcont">
@@ -14,7 +38,8 @@ const Header = () => {
           <ul className='d-flex gap-5'>
             <li>home</li>
             <li>how it work</li>
-            <li><Link to='/signin' className='btn btn-primary'>Signin</Link></li>
+
+            <li><Link onClick={handlelogout} className='btn btn-primary'>Logout</Link></li>
 
           </ul>
         </div>

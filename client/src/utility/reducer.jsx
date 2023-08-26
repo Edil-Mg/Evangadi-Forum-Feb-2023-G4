@@ -15,6 +15,14 @@ const reducer = (state, action) => {
           },
         },
       };
+     case "SET_EMAIL":
+      return {
+        ...state,
+        user: {
+          email: action.user.email,
+        },
+      };
+
 
     default:
       return state;

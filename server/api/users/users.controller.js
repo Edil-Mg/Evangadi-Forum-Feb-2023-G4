@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 dotenv.config();
+let verify_data;
 
 const userController = {
   createUser: (req, res) => {
@@ -167,23 +168,58 @@ const userController = {
           
          //  sending code
          let v_code = generateRandomSixDigitNumber();
-          sendEmail(email, v_code);
-          res.send(`code sent to your email`);
-         
-          let v_data = {
+        sendEmail(email, v_code);
+        verify_data= {
             email,
             v_code,
           }
-           console.log(v_data);
-
-
-
-        
-
+        res.send({state: 'success' ,msg: `code sent to your email` });
+         console.log(verify_data);
 
       })
 
-  } ,
+  },
+
+  confimCode: (req, res) => { 
+    const { v_code } = req.body; 
+    if (v_code == verify_data.v_code) { 
+      res.send({state: 'success' ,msg: `confimed` });
+    }
+
+    res.status(400)
+            .json({ msg: "incorrect v_code" });
+  },
+
+  changePassword: (req, res) => { 
+    const { new_password, c_password, email } = req.body; 
+    console.log(req.body);
+    if (new_password !== c_password) { 
+      res.status(400)
+            .json({ msg: "password and c_password has to be the same" });
+
+    }
+
+    //password encryption
+    const salt = bcrypt.genSaltSync();
+    req.body.new_password = bcrypt.hashSync(new_password, salt);
+
+     userService.changepass(req.body, (err, results) => {
+            if (err) {
+                console.log(err);
+                return res
+                    .status(500)
+                    .json({ msg: "database connection err" });
+            }
+            return res.status(200).json({
+                msg: "password changed successfully",
+                data: results
+            })
+        })
+
+
+
+
+  }
     
 }
 

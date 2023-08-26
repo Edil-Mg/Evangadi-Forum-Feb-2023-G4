@@ -33,31 +33,20 @@ const [{user }, dispatch] = useStateValue();
     // if (validateForm()) {
       try {
         axios.defaults.withCredentials = true;
-        const response = await axios.post(`http://localhost:4500/api/users/login`,form);
+        const response = await axios.post(`http://localhost:4500/api/users/forgetpassword`,form);
         const data = response.data;
-       
-
-        // console.log(data.token);
-        // console.log(data.user['id']);
-        // console.log(data.user['userName']);
-
-          if (data) {
+        alert(data.msg)
+        if (data.state == 'success') { 
             dispatch({
-              type: "SET_USER",
+              type: "SET_EMAIL",
               user: {
-                token: data.token,
-                user: {
-                  id: data.user['id'],
-                  username: data.user['userName'],
-                }
-
+                email: form.email,
               },
             });
-          }
-        
-          console.log(user);
-        
-     
+          
+          navigate('/code');
+        }
+        console.log(data);
         
       } catch (error) {
         alert("Error authenticating user");

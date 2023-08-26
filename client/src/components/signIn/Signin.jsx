@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {useStateValue} from '../../utility/stateprovider'
 import './signin.css'
@@ -11,6 +11,14 @@ const Signin = () => {
   const [auth, setAuth] = useState(false);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  useEffect(() => {
+    if (user) { 
+      navigate('/');
+    }
+    console.log(user);
+
+  }, [navigate])  
+  
 
    const setField = (field, value) => {
     setForm({
@@ -34,12 +42,6 @@ const Signin = () => {
         axios.defaults.withCredentials = true;
         const response = await axios.post(`http://localhost:4500/api/users/login`,form);
         const data = response.data;
-       
-
-        // console.log(data.token);
-        // console.log(data.user['id']);
-        // console.log(data.user['userName']);
-
           if (data) {
             dispatch({
               type: "SET_USER",
@@ -53,14 +55,14 @@ const Signin = () => {
               },
             });
           }
-        
-          console.log(user);
+        navigate('/');
+          console.log(data);
         
      
         
       } catch (error) {
-        alert("Error authenticating user");
-      console.log('Error authenticating user:', error.message);
+        alert(error.response.data.msg);
+      console.log('Error authenticating user:', error.response.data.msg);
       setError({
         ...errors,
         pass: 'Network Error: Unable to reach the server',

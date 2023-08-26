@@ -18,6 +18,22 @@ const userService = {
         );
         //query select user using email to get user_id
     },
+    changepass: (data, callback) => {
+        connection.query(`UPDATE registration SET user_password = ? WHERE user_email = ?`,
+            [
+                data.new_password
+                , data.email
+            ],
+            (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+                return callback(null, result);
+            }
+        );
+        //query select user using email to get user_id
+    },
+
     profile: (data, callback) => {
         connection.query(`INSERT INTO profile(user_id,first_name,middle_name,last_name,other_name)VALUES(?,?,?,?,?)`,
             [
