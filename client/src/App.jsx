@@ -12,9 +12,10 @@ import Question_and_answer from './pages/question_and_answer/Question_and_answer
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 
-
-
-
+import Signup from './components/signup/Signup';
+import Signin from './components/signIn/Signin';
+import Forget_password from './components/forget_password/Forget_password';
+import Code_enter from './components/forget_password/Code_enter';
 function App() {
 
 
@@ -23,9 +24,16 @@ function App() {
 
       <Header />
       <Routes>
-        <Route path='/' element={<>
-                                <Home />
+        <Route path='/' element={<><Home /></>} />
+        <Route path='/forgetpassword' element={<><Forget_password /></>} />
+        <Route path='/code' element={<><Code_enter /></>} />
+        <Route path='/login' element={<>
+                                <Signin />
+        </>} />
+        <Route path='/signup' element={<>
+                                <Signup />
                               </>} />
+        
         <Route path='/landing' element={<>
                                 <Landing />
                               </>} />

@@ -14,7 +14,7 @@ const Header = () => {
           <ul className='d-flex gap-5'>
             <li>home</li>
             <li>how it work</li>
-            <li><Link to='/landing' className='btn btn-primary'>Signin</Link></li>
+            <li><Link to='/signin' className='btn btn-primary'>Signin</Link></li>
 
           </ul>
         </div>

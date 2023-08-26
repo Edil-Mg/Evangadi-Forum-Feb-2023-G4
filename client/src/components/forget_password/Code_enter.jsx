@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import {useStateValue} from '../../utility/stateprovider'
-import './signin.css'
+import './forget_password.css'
+import { useNavigate,Link } from 'react-router-dom';
 import axios from 'axios';
-
-const Signin = () => {
-  const [{user }, dispatch] = useStateValue();
+import { useStateValue } from '../../utility/stateprovider'
+const Code_enter = () => {
+ const [{user }, dispatch] = useStateValue();
   const [form, setForm] = useState({});
   const [errors, setError] = useState({});
   const [auth, setAuth] = useState(false);
@@ -76,7 +75,7 @@ const Signin = () => {
     <div className="container-fluid login_page">
       <div className="container py-5 d-md-flex justify-content-between login_container">
         <div className="main col-12 col-md-6 me-md-2 p-5 d-flex flex-column justify-content-center">
-          <p className="p1">Login to your account</p>
+          <p className="p1">Verify email</p>
           <p className="p2 text-center">
             Don't have an account?
             <Link to="/signup" className="a3">
@@ -86,26 +85,18 @@ const Signin = () => {
           <form onSubmit={handleSubmit}>
             <input
               className="in1"
-              type="email"
-              name="email"
-              onChange={(e) => setField('email', e.target.value)}
-              placeholder="Your Email"
+              type="number"
+              name="v_code"
+              onChange={(e) => setField('v_code', e.target.value)}
+              placeholder="verification code"
             />
-            <input
-              className="in1"
-              name="password"
-              type="password"
-              onChange={(e) => setField('password', e.target.value)}
-              placeholder="Your Password"
-            />
-            <span className="showHide2">
-              <br />
-             
+            <span  className="showHide2">
+             <br />
             </span>
             <button className="btn1">submit</button>
           </form>
-          <Link to="/forgetpassword" className="a3 a1">
-            forget password?
+          <Link to="/login" className="a3 a1">
+            Signin with email and password
           </Link>
         </div>
         <div className="sideNote2 container col-12 col-md-6 ms-md-2  mt-sm-5">
@@ -137,4 +128,6 @@ const Signin = () => {
 
 }
 
-export default Signin
+
+
+export default Code_enter
