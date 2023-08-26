@@ -17,12 +17,11 @@ const navigate = useNavigate();
   
 
   const handlelogout = () => { 
-          dispatch({
-              type: "SET_USER",
-              user: { },
-            });
+         dispatch({
+            type: "SET_USER",
+            user: null,
+        });
           navigate('/login')
-          //location.reload(true);
        
   }
 
@@ -38,9 +37,12 @@ const navigate = useNavigate();
           <ul className='d-flex gap-5'>
             <li>home</li>
             <li>how it work</li>
-
-            <li><Link onClick={handlelogout} className='btn btn-primary'>Logout</Link></li>
-
+            {user ?
+            <li onClick={handlelogout} className='btn btn-primary'>  Logout</li>
+            :<Link to='/login'> </Link>
+            }
+            
+            
           </ul>
         </div>
       </div>

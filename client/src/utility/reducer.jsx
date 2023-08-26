@@ -4,26 +4,25 @@ export const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) { 
-     case "SET_USER":
+    case "SET_USER":
       return {
         ...state,
-        user: {
-          token: action.user.token,
+        user: action.user ? {
+          token: action.user.token || null,
           user: {
-            id: action.user.user.id,
-            username: action.user.user.username,
+            id: action.user.user ? action.user.user.id || null : null,
+            username: action.user.user ? action.user.user.username || null : null,
           },
-        },
+        } : null,
       };
-     case "SET_EMAIL":
+    case "SET_EMAIL":
       return {
         ...state,
         user: {
-          email: action.user.email,
+          ...state.user,
+          email: action.user.email || null,
         },
       };
-
-
     default:
       return state;
   }
