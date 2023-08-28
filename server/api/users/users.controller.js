@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import {connection} from '../../config/db.js';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
-import { upload } from '../../config/multer.js';
+//import { upload } from '../../config/multer.js';
 import dotenv from 'dotenv';
 dotenv.config();
 let verify_data;
