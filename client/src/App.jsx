@@ -17,13 +17,14 @@ import Signin from './components/signIn/Signin';
 import Forget_password from './components/forget_password/Forget_password';
 import Code_enter from './components/forget_password/Code_enter';
 import NewPassword from './components/forget_password/newPassword'
+import AskQuestion from './pages/AskQuestion/AskQuestion'
+
 function App() {
 ///newPassword
 
   return (
     <div className="App">
 
-      
       <Routes>
         <Route path='/' element={<><Header /> <Home /></>} />
         <Route path='/forgetpassword' element={<><Forget_password /></>} />
@@ -36,8 +37,8 @@ function App() {
                                 <Signup />
                               </>} />
         
-        <Route path='/landing' element={<>
-                                <Landing />
+        <Route path='/AskQuestion' element={<>
+                               <Header /> <AskQuestion />
                               </>} />
         <Route path='/profile' element={<>
                                 <Header /><Profile />

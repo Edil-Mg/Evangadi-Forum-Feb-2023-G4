@@ -6,9 +6,9 @@ const Home = () => {
 return (
     <div className="container my-5 home-container">
       <div className="d-flex mb-5 justify-content-between">
-        <button className="ask_button" >
+        <Link to='AskQuestion' ><button className="ask_button" >
           Ask Question
-        </button>
+        </button></Link>
         <h4>Welcome</h4>
       </div>
       <h3>Questions</h3>

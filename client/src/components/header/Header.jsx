@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {useStateValue} from '../../utility/stateprovider'
-import './header.css'
-
+import './header.css';
+import axios from 'axios';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Header = () => {
 const [{user }, dispatch] = useStateValue();
 const navigate = useNavigate();
   useEffect(() => {
-    if (user==null) { 
+    if (user == null) {
       navigate('/login');
     }
-    console.log(user);
+   
 
   }, [navigate])  
   
@@ -25,12 +26,17 @@ const navigate = useNavigate();
        
   }
 
+  const handleClick = () => { 
+     navigate('/profile')
+  }
+
 
   return (
     <div className='header container-fluid m-3 p-3'>
       <div className="container d-flex subcont">
         <div className="imageconainer">
-          <img className='logo' src='https://www.evangadi.com/themes/humans//assets/images/misc/evangadi-logo-home.png' alt="evangadi logo" />
+          <Link to='/'>
+          <img className='logo' src='https://www.evangadi.com/themes/humans//assets/images/misc/evangadi-logo-home.png' alt="evangadi logo" /></Link>
         </div>
 
         <div className="linkcontainer ">
@@ -38,7 +44,11 @@ const navigate = useNavigate();
             <li>home</li>
             <li>how it work</li>
             {user ?
-            <li onClick={handlelogout} className='btn btn-primary'>  Logout</li>
+              <>
+                <h6 onClick={handleClick}><AccountCircleIcon/>{user.user['username']}</h6>
+                
+                <li onClick={handlelogout} className='btn btn-primary'>  Logout</li>
+              </>
             :<Link to='/login'> </Link>
             }
             

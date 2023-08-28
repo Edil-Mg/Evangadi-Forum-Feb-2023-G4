@@ -98,7 +98,7 @@ const userController = {
     },
     
     getUserById: (req, res) => {
-        userService.userById(req.id, (err, results) => {
+      userService.userById(req.body.id, (err, results) => {
             if (err) {
                 console.log(err);
                 return res

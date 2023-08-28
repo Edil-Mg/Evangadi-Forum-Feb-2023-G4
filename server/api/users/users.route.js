@@ -8,6 +8,7 @@ const usersRouter = express.Router();
 usersRouter.get("/", auth, userController.getUserById);
 usersRouter.post('/createuser', userController.createUser)
 usersRouter.post('/login', userController.login)
+usersRouter.post('/userinfo',auth, userController.getUserById)
 // usersRouter.post('/logout', userController.logout)
 usersRouter.post('/forgetpassword',userController.forgetPassword)
 usersRouter.post('/confimCode', userController.confimCode)

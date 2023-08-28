@@ -14,7 +14,7 @@ export default {
     first_name VARCHAR(255) not null,
     middle_name VARCHAR(255) not null,
     last_name VARCHAR(255) not null,  
-	other_name VARCHAR(255) not null, 
+	  other_name VARCHAR(255) not null, 
     image_url VARCHAR(255),  
     PRIMARY KEY (user_profile_id),
     FOREIGN KEY (user_id) REFERENCES registration(user_id)
@@ -28,15 +28,16 @@ export default {
     PRIMARY KEY (user_address_id),
     FOREIGN KEY (user_id) REFERENCES registration(user_id)
   )`,
-  questionTableCreate: `CREATE TABLE if not exists question (
-    question_id INT AUTO_INCREMENT not null,
-    question TEXT not null,
-    question_description TEXT,
-    category VARCHAR(255),
-    user_id INT not null,
-    PRIMARY KEY (question_id),
-    FOREIGN KEY (user_id) REFERENCES registration(user_id)
-  )`,
+  questionTableCreate: `CREATE TABLE IF NOT EXISTS question (
+  question_id INT AUTO_INCREMENT NOT NULL,
+  question TEXT NOT NULL,
+  question_description TEXT,
+  category VARCHAR(255),
+  user_id INT NOT NULL,
+  inserted_datetime DATETIME DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (question_id),
+  FOREIGN KEY (user_id) REFERENCES registration(user_id)
+)`,
   answerTableCreate: `CREATE TABLE if not exists answer (
     answer_id INT AUTO_INCREMENT not null,
     answer TEXT not null,
