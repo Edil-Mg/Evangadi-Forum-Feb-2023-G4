@@ -1,7 +1,5 @@
 import React from 'react';
 import './answers.css';
-import axios from 'axios';
-
 
 const Answer = ({answer,userName,profile,answered_date}) => {
     return (

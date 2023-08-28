@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './forget_password.css'
 import { useNavigate,Link } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../../utility/axios';
 import { useStateValue } from '../../utility/stateprovider'
-
+import About from '../../components/about/About';
 
 const Forget_password = () => {
 const [{user }, dispatch] = useStateValue();
@@ -33,7 +33,7 @@ const [{user }, dispatch] = useStateValue();
     // if (validateForm()) {
       try {
         axios.defaults.withCredentials = true;
-        const response = await axios.post(`http://localhost:4500/api/users/forgetpassword`,form);
+        const response = await axios.post(`/api/users/forgetpassword`,form);
         const data = response.data;
         alert(data.msg)
         if (data.state == 'success') { 
@@ -90,29 +90,7 @@ const [{user }, dispatch] = useStateValue();
             Signin with email and password
           </Link>
         </div>
-        <div className="sideNote2 container col-12 col-md-6 ms-md-2  mt-sm-5">
-          <p className="forTitle">About</p>
-          <h1>Evangadi Networks Q&A</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-            voluptate officiis beatae nobis pariatur omnis facere accusamus
-            laboriosam hic, adipisci vero reiciendis, recusandae sit ad, eum
-            quisquam! Molestias, ut commodi!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-            voluptate officiis beatae nobis pariatur omnis facere accusamus
-            laboriosam hic, adipisci vero reiciendis, recusandae sit ad, eum
-            quisquam! Molestias, ut commodi!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
-            ipsum, provident minus laudantium esse soluta maiores nostrum nisi
-            sunt perferendis dolorum. Praesentium necessitatibus quia
-            consectetur sunt tempora possimus eveniet voluptates?
-          </p>
-          <button className="btn1">HOW IT WORKS</button>
-        </div>
+         <About />
       </div>
     </div>
   );

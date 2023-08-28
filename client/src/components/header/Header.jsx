@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import {useStateValue} from '../../utility/stateprovider'
 import './header.css';
-import axios from 'axios';
+import axios from '../../utility/axios';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Header = () => {

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import './home.css'
-import axios from 'axios';
+import axios from "../../utility/axios";
 
 const Home = () => {
   const [allQuestions, setallQuestions] = useState([]);
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('http://localhost:4500/api/questions/');
+        const response = await axios.get('/api/questions/');
         setallQuestions(response.data.data);
       } catch (err) {
         alert(err);

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from '../../utility/axios';
 import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useStateValue } from "../../utility/stateprovider";
@@ -32,7 +32,7 @@ const AnswerQuestion = ({ questionId }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4500/api/answers/newanswer",
+        "/api/answers/newanswer",
         {
           user_id: user.user.id,
           question_id: questionId,

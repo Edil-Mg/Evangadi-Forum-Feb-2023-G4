@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "../../utility/axios";
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './questionDetail.css'
@@ -14,7 +14,7 @@ const SingleQuestion = () => {
   useEffect(() => { 
     async function fetchData() {
       try {
-        const response = await axios.get(`http://localhost:4500/api/questions/:${params.id}`);
+        const response = await axios.get(`/api/questions/:${params.id}`);
         setQuestion(response.data.data);
       } catch (err) {
         alert(err);
@@ -32,14 +32,14 @@ const SingleQuestion = () => {
   const answersByQuestionId = async () => {
     try {
       const answersRes = await axios.get(
-        `http://localhost:4500/api/answers/:${params.id}`
+        `/api/answers/:${params.id}`
       );
       setAnswers(answersRes.data.data);
     } catch (err) {
       console.log("problem", err);
     }
   };
-  console.log(answers);
+ // console.log(answers);
   return (
     <>
       <h3>Question</h3>
@@ -52,7 +52,7 @@ const SingleQuestion = () => {
       <div>{answers.length > 0 && <h3>Answer From The Community</h3>}</div>
           {answers && answers?.map((answer) => (
         
-            <Answer answer={answer?.answer} userName={answer.user_name} profile={answer.image_url} answered_date={ answer.answered_date} />
+            <Answer key={answer?.answer_id} answer={answer?.answer} userName={answer.user_name} profile={answer.image_url} answered_date={ answer.answered_date} />
        
       ))}
       <AnswerQuestion questionId={question?.question_id}/>

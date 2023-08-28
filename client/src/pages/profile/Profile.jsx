@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './profile.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { useStateValue } from '../../utility/stateprovider';
-import axios from 'axios';
+import axios from "../../utility/axios";
 
 const Profile = () => {
   const [userData, setUserData] = useState({});
   const [{ user }, dispatch] = useStateValue();
+  const [form, setForm] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleChange = (event) => {
+    setForm(event.target.files[0]);
+    profileChange();
+  };
 
   useEffect(() => {
     const id = { id: user.user.id };
@@ -14,7 +20,7 @@ const Profile = () => {
       try {
         axios.defaults.withCredentials = true;
         const response = await axios.post(
-          'http://localhost:4500/api/users/userinfo',
+          '/api/users/userinfo',
           id,
           {
             headers: {
@@ -23,8 +29,8 @@ const Profile = () => {
           }
         );
         const data = response.data.data;
+       // console.log(data);
         setUserData(data);
-        // console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -33,6 +39,19 @@ const Profile = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+  //  console.log(form);
+  }, [form]);
+
+  const profileChange = () => {
+   // console.log(form);
+    const fetchData = () => { 
+      const response = axios.post(`/api/users/profilepicture`,[form,user.user['id']]);
+      console.log(response);
+    }
+    fetchData();
+  };
+
   return (
     <div className="container">
       <div className="row">
@@ -40,15 +59,18 @@ const Profile = () => {
           <div className="profile-picture">
             <img
               width="300px"
-              src="https://images.unsplash.com/photo-1505968409348-bd000797c92e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+              src={userData?.image_url}
               alt="Profile Picture"
             />
+            <form id="myForm" encType="multipart/form-data">
+              <input type="file" name="profile" onChange={handleChange} />
+            </form>
           </div>
         </div>
         <div className="col-md-9">
           <div className="profile-info">
             <div className="row">
-              {Object.keys(userData).map(key => (
+              {Object.keys(userData).map((key) => (
                 <div className="col-md-4" key={key}>
                   <strong>{key}</strong>
                   <p>{userData[key]}</p>

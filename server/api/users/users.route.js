@@ -9,7 +9,7 @@ usersRouter.get("/", auth, userController.getUserById);
 usersRouter.post('/createuser', userController.createUser)
 usersRouter.post('/login', userController.login)
 usersRouter.post('/userinfo',auth, userController.getUserById)
-// usersRouter.post('/logout', userController.logout)
+usersRouter.post('/profilepicture', userController.profilepicture)
 usersRouter.post('/forgetpassword',userController.forgetPassword)
 usersRouter.post('/confimCode', userController.confimCode)
 usersRouter.post('/changePassword',userController.changePassword)

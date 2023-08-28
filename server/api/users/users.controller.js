@@ -5,6 +5,7 @@ import bcrypt from 'bcryptjs';
 import {connection} from '../../config/db.js';
 import jwt from 'jsonwebtoken';
 import nodemailer from 'nodemailer';
+import { upload } from '../../config/multer.js';
 import dotenv from 'dotenv';
 dotenv.config();
 let verify_data;
@@ -219,7 +220,13 @@ const userController = {
 
 
 
-  }
+  },
+  profilepicture: (upload.single('profile'), (req, res)=> { 
+    const image = req.file;
+    console.log(req.body);
+    console.log(image);
+    res.json(req.body);
+  })
     
 }
 

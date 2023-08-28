@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./askQuestion.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../utility/axios";
 import { useStateValue } from '../../utility/stateprovider';
 export default function AskQuestion() {
   const [{user }, dispatch] = useStateValue();
@@ -20,7 +20,7 @@ export default function AskQuestion() {
         });
     try {
       const response = await axios.post(
-        "http://localhost:4500/api/questions/createQuestion",
+        "/api/questions/createQuestion",
         {
           user_id: user.user.id,
           question: form.question,
@@ -58,23 +58,30 @@ export default function AskQuestion() {
           className="question_title"
           type="text"
           name="question"
-          Placeholder="Title"
+          placeholder="Title"
+          required
           onChange={handleChange}
         />
-          <input
+        <select
           className="question_title"
-          type="text"
-          name="question_catagory"
-          Placeholder="question_catagory"
+          name="question_category"
           onChange={handleChange}
-        />
+           required
+        >
+          <option value="">Select category</option>
+          <option value="phase one">Phase One</option>
+          <option value="phase two">Phase Two</option>
+          <option value="phase three">Phase Three</option>
+          <option value="project">Project</option>
+          <option value="other">Other</option>
+        </select>
         <textarea
           className="question_input"
           placeholder="Question Description..."
           name="questionDescription"
           onChange={handleChange}
         ></textarea>
-        <button className="question_post_btn" type="">
+        <button className="question_post_btn" >
           Post Your Question
         </button>
       </form>

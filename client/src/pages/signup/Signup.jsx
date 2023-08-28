@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import './signup.css'
 import { useStateValue } from '../../utility/stateprovider'
-import axios from 'axios';
+import axios from '../../utility/axios';
+import About from '../../components/about/About';
 
 const Signup = () => {
 const [{user }, dispatch] = useStateValue();
@@ -33,7 +34,7 @@ const [{user }, dispatch] = useStateValue();
     // if (validateForm()) {
       try {
         axios.defaults.withCredentials = true;
-        const response = await axios.post(`http://localhost:4500/api/users/createuser`,form);
+        const response = await axios.post(`/api/users/createuser`,form);
         const data = response.data;
         console.log(response);
         if (data) { 
@@ -159,29 +160,7 @@ const [{user }, dispatch] = useStateValue();
             Already have an account?
           </Link>
         </div>
-        <div className="SignupNote container col-12 col-md-6 ms-md-2  mt-sm-5">
-          <p className="forTitle">About</p>
-          <h1>Evangadi Networks Q&A</h1>
-          <p className="lorem">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-            voluptate officiis beatae nobis pariatur omnis facere accusamus
-            laboriosam hic, adipisci vero reiciendis, recusandae sit ad, eum
-            quisquam! Molestias, ut commodi!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem
-            voluptate officiis beatae nobis pariatur omnis facere accusamus
-            laboriosam hic, adipisci vero reiciendis, recusandae sit ad, eum
-            quisquam! Molestias, ut commodi!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum dolor
-            odio harum sunt, quaerat, molestias fuga expedita ad excepturi
-            officiis aliquam aut nemo ratione culpa id laborum ipsum porro
-            tempore?
-          </p>
-          <button className="btn1">HOW IT WORKS</button>
-        </div>
+         <About />
       </div>
     </div>
   );
