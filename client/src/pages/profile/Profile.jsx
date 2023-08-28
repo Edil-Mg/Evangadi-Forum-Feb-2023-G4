@@ -3,17 +3,25 @@ import './profile.css';
 import { useStateValue } from '../../utility/stateprovider';
 import axios from "../../utility/axios";
 import profile from "../../assets/Images/User.png";
+import {useNavigate} from 'react-router-dom'
 const Profile = () => {
   const [userData, setUserData] = useState({});
   const [{ user }, dispatch] = useStateValue();
   const [form, setForm] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setForm(event.target.files[0]);
     profileChange();
   };
 
+  useEffect(() => {
+    if (!user) { 
+      navigate('/login');
+    }
+    // console.log(user);
+
+  }, [navigate])
   useEffect(() => {
     const id = { id: user.user.id };
     const fetchData = async () => {
@@ -62,9 +70,9 @@ const Profile = () => {
               src={userData.image_url!=null ? userData.image_url : profile }
               alt="Profile Picture"
             />
-            <form id="myForm" encType="multipart/form-data">
-              <input type="file" name="profile" onChange={handleChange} />
-            </form>
+          <form id="myForm" encType="multipart/form-data">
+          <input type="file" name="profile" onChange={handleChange} />
+        </form>
           </div>
         </div>
         <div className="col-md-9">

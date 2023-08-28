@@ -1,16 +1,26 @@
 import axios from "../../utility/axios";
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './questionDetail.css'
 import AnswerQuestion from '../../components/AnswerQuestion/AnswerQuestion';
 import Answer from '../../components/answers/Answers';
+import { useStateValue } from "../../utility/stateprovider";
 
 
 const SingleQuestion = () => {
   let params = useParams();
+   const [{ user }, dispatch] = useStateValue();
   const [question, setQuestion] = useState([]);
   const [answers, setAnswers] = useState([]);
+   const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) { 
+      navigate('/login');
+    }
+    // console.log(user);
 
+  }, [navigate])
+  
   useEffect(() => { 
     async function fetchData() {
       try {

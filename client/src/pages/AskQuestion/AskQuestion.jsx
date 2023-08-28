@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./askQuestion.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../utility/axios";
@@ -7,6 +7,15 @@ export default function AskQuestion() {
   const [{user }, dispatch] = useStateValue();
   const [form, setForm] = useState({});
   const navigate = useNavigate();
+
+    useEffect(() => {
+    if (!user) { 
+      navigate('/login');
+    }
+    // console.log(user);
+
+  }, [navigate])
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };

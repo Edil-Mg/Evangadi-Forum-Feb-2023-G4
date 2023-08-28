@@ -221,12 +221,20 @@ const userController = {
 
 
   },
-  profilepicture: (upload.single('profile'), (req, res)=> { 
-    const image = req.file;
-    console.log(req.body);
-    console.log(image);
-    res.json(req.body);
-  })
+
+
+  profilepicture: async (req, res) => {
+    try {
+      const image = req.file;
+      console.log('Request Body:', req.body);
+      console.log('Uploaded File:', image);
+      res.json(req.body);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  }
+
     
 }
 
