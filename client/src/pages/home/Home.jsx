@@ -17,7 +17,7 @@ const Home = () => {
     }
     fetchData();
   }, []);
-console.log(allQuestions);
+
 return (
     <div className="container my-5 home-container">
       <div className="d-flex mb-5 justify-content-between">
@@ -28,15 +28,15 @@ return (
       </div>
       <h3>Questions</h3>
       <div>
-        {allQuestions.map((question) => (
+      {allQuestions.map((question) => (
           <div key={question.question_id}>
-            <p>{question.question}</p>
-            
-            <hr />
             <Link
-              to={`questions/${question.question}`}
+              to={`/SingleQuestion/${question.question_id}`}
               className="text-decoration-none text-reset"
-            >
+           >
+            <p>{question.question}</p>
+            <hr />
+          
               
             </Link>
           </div>

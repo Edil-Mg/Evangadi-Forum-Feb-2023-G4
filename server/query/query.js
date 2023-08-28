@@ -38,15 +38,16 @@ export default {
   PRIMARY KEY (question_id),
   FOREIGN KEY (user_id) REFERENCES registration(user_id)
 )`,
-  answerTableCreate: `CREATE TABLE if not exists answer (
-    answer_id INT AUTO_INCREMENT not null,
-    answer TEXT not null,
-    user_id INT not null,
-    question_id INT not null,
+  answerTableCreate: `CREATE TABLE IF NOT EXISTS answer (
+    answer_id INT AUTO_INCREMENT NOT NULL,
+    answer TEXT NOT NULL,
+    user_id INT NOT NULL,
+    question_id INT NOT NULL,
+    answered_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (answer_id),
     FOREIGN KEY (user_id) REFERENCES registration(user_id),
     FOREIGN KEY (question_id) REFERENCES question(question_id)
-  )`,
+);`,
   replayTableCreate: `CREATE TABLE if not exists replay (
     replay_id INT AUTO_INCREMENT not null,
     replay TEXT not null,

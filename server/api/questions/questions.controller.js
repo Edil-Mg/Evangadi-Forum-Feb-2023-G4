@@ -38,8 +38,8 @@ const questionController = {
 
     getQuestionById: (req, res) => {
         //id is postId
-        let id = req.params.id;
-        questionById(id, (err, results) => {
+        let id = req.params.id[1];
+        questionService.questionById(id, (err, results) => {
             if (err) {
                 console.log(err);
                 return res

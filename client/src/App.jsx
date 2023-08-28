@@ -16,11 +16,14 @@ import Signup from './components/signup/Signup';
 import Signin from './components/signIn/Signin';
 import Forget_password from './components/forget_password/Forget_password';
 import Code_enter from './components/forget_password/Code_enter';
-import NewPassword from './components/forget_password/newPassword'
-import AskQuestion from './pages/AskQuestion/AskQuestion'
+import NewPassword from './components/forget_password/newPassword';
+import AskQuestion from './pages/AskQuestion/AskQuestion';
+import SingleQuestion from './pages/singleQuestion/SingleQuestion';
+
+
 
 function App() {
-///newPassword
+
 
   return (
     <div className="App">
@@ -46,7 +49,12 @@ function App() {
 
         <Route path='/questionandanswer' element={<>
                                 <Header /><Question_and_answer />
+        </>} />
+        <Route path='/SingleQuestion/:id' element={<>
+                                <Header /><SingleQuestion />
                               </>} />
+
+        <Route path="/questions/:id" element={<SingleQuestion />} />
 
       </Routes>
 

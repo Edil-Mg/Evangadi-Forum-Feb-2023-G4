@@ -31,7 +31,7 @@ const questionService = {
         },
     questionById: (id, callback) => {
         //id is postId
-        connection.query(`SELECT * FROM question WHERE post_id = ?`, [id], (err, result) => {
+        connection.query(`SELECT * FROM question WHERE question_id = ?`, [id], (err, result) => {
             if (err) {
                 return callback(err);
             }
