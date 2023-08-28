@@ -27,7 +27,7 @@ const questionController = {
     },
 
     getQuestions: (req, res) => {
-        getAllQuestions((err, results) => {
+        questionService.getAllQuestions((err, results) => {
             if (err) {
                 console.log(err);
                 return res.status(500).json({ msg: "database connection error" })

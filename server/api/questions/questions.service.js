@@ -22,7 +22,7 @@ const questionService = {
   
     }, 
     getAllQuestions: (callback) => {
-    connection.query(`SELECT registration.user_name, question,question_description,question_code_block,tags,post_id FROM question JOIN registration ON question.user_id = registration.user_id  ORDER BY question_id DESC`, [], (err, result) => {
+    connection.query(`SELECT * FROM question  ORDER BY inserted_datetime DESC`, [], (err, result) => {
         if (err) {
             return callback(err);
         }
