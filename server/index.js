@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import {connection} from './config/db.js'
 import './config/install.js'
-import { upload} from './config/multer.js'
+//import { upload} from './config/multer.js'
 // routing 
 import usersRouter from "./api/users/users.route.js"
 import answersRouter from "./api/answers/answers.route.js";
