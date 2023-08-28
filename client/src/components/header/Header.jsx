@@ -41,7 +41,7 @@ const navigate = useNavigate();
 
         <div className="linkcontainer ">
           <ul className='d-flex gap-5'>
-            <li>home</li>
+         <li><Link to='/' id='onelink'>home</Link></li>
             <li>how it work</li>
             {user ?
               <>

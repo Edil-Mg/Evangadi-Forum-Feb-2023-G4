@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './profile.css';
 import { useStateValue } from '../../utility/stateprovider';
 import axios from "../../utility/axios";
-
+import profile from "../../assets/Images/User.png";
 const Profile = () => {
   const [userData, setUserData] = useState({});
   const [{ user }, dispatch] = useStateValue();
@@ -57,9 +57,9 @@ const Profile = () => {
       <div className="row">
         <div className="col-md-3">
           <div className="profile-picture">
-            <img
+            <img className='avatar'
               width="300px"
-              src={userData?.image_url}
+              src={userData.image_url!=null ? userData.image_url : profile }
               alt="Profile Picture"
             />
             <form id="myForm" encType="multipart/form-data">

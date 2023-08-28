@@ -15,3 +15,11 @@
 .imageconainer > .logo{
     /* width: 150px; */
 }
+
+#onelink{
+    color: black;
+    text-decoration: none;
+}
+#onelink:hover{
+    color: rgba(0, 0, 255, 0.544);
+}

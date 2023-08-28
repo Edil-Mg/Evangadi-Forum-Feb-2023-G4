@@ -41,12 +41,12 @@ const SingleQuestion = () => {
   };
  // console.log(answers);
   return (
-    <>
-      <h3>Question</h3>
-      <h5>{question?.question}</h5>
-       <p>{question?.category}</p>
-      <p>{question?.question_description}</p>
-      <p>{question?.inserted_datetime}</p>
+    <div className="container">
+      <h2>Question</h2>
+      <h4>{question?.question}</h4>
+       <h5>{question?.category}</h5>
+      <h5>{question?.question_descrih5tion}</h5>
+      <h6>{question?.inserted_datetime}</h6>
       <hr />
       <hr />
       <div>{answers.length > 0 && <h3>Answer From The Community</h3>}</div>
@@ -57,7 +57,7 @@ const SingleQuestion = () => {
       ))}
       <AnswerQuestion questionId={question?.question_id}/>
       <hr />
-    </>
+    </div>
 
   )
 }
