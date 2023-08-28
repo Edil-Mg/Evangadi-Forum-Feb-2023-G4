@@ -225,9 +225,9 @@ const userController = {
 
   profilepicture: async (req, res) => {
     try {
-      const image = req.file;
+      // const image = req.file;
       console.log('Request Body:', req.body);
-      console.log('Uploaded File:', image);
+      // console.log('Uploaded File:', image);
       res.json(req.body);
     } catch (error) {
       console.log(error);
