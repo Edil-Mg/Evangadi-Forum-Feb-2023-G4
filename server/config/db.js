@@ -6,7 +6,7 @@ import mysql from 'mysql2';
 // const password = process.env.DB_PASSWORD;
 // console.log(port);
 
-const port = 3306;
+const port = 8888;
 const host = 'localhost';
 const database = 'Evangadi';
 const user = 'Evangadi';
@@ -19,7 +19,8 @@ export const connection = mysql.createConnection({
     database,
     user,
     password,
-    connectionLimit: 10,
+    socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock"
+    
 });
 
 connection.connect((error) => { 
