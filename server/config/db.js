@@ -6,10 +6,10 @@ import mysql from 'mysql2';
 // const password = process.env.DB_PASSWORD;
 // console.log(port);
 
-const port = 3333;
+const port = 3306;
 const host = 'localhost';
-const database = 'EvangadiForem2';
-const user = 'root';
+const database = 'Evangadi';
+const user = 'Evangadi';
 const password = '1234';
 // console.log(port);
 

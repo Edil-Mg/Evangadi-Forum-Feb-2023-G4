@@ -39,7 +39,7 @@ const [{user }, dispatch] = useStateValue();
         console.log(response);
         if (data) { 
           alert(data.msg);
-          navigate('/landing')
+          navigate('/login')
         }
         
       } catch (error) {
@@ -133,6 +133,7 @@ const [{user }, dispatch] = useStateValue();
               type='password'
               placeholder="Password"
              />
+
              <input
               className="in11"
               onChange={(e) => setField('c_password', e.target.value)}
@@ -140,7 +141,9 @@ const [{user }, dispatch] = useStateValue();
               type='password'
               placeholder="confim Password"
             />
+            
             <span className="showHide">
+            <br/>
               {/* <Icon icon={icon} size={20} onClick={HandleIconChange} /> */}
             </span>
             <button className="btnSign">Agree and Join</button>
