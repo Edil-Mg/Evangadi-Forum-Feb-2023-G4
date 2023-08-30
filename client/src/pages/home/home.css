@@ -1,3 +1,4 @@
+
 .home-container {
 	min-width: 500px;
     min-height: 65vh;
@@ -19,9 +20,13 @@
 .ask_button:active {
 	border: 3px solid #516cf0;
 }
-hr{
+hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
     border-top: 1px solid rgba(0,0,0,.1);
+}
+.ques p {
+	font-size: 20px;
+	font-weight: 500;
 }

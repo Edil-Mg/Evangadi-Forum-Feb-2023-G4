@@ -13,14 +13,10 @@
 .subcont{
     justify-content: space-between;
 }
-.imageconainer > .logo{
-    /* width: 150px; */
-}
+/* .imageconainer > .logo{
+    width: 150px;
+} */
 
-#onelink{
-    color: black;
-    text-decoration: none;
-}
 #onelink:hover{
     color: rgba(0, 0, 255, 0.544);
 }
@@ -29,4 +25,21 @@
 }
 .btn:hover {
   background-color: #FF8500;
+}
+.nav_row {
+    color: #23222299;
+}
+.nav_row a:hover {
+color:#FF8500;
+}
+.nav_row a {
+    text-decoration:none !important ;
+    color:#23222299 ;
+}
+
+#onelink:hover  {
+color:#FF8500
+}
+#onelink {
+    color: #23222299;
 }

@@ -53,7 +53,15 @@ const Signup = () => {
 	};
 
 	return (
-		<div className="container-fluid sign_page">
+		<div
+			className="container-fluid sign_page"
+			style={{
+				backgroundImage: `url(https://evangadi-forum-group-2-jan-2023.netlify.app/assets/bg-svg-f-d64add7e.svg)`,
+				// backgroundSize: "cover",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "105% 100%",
+			}}
+		>
 			<div className="container d-md-flex mx-auto py-5 align-items-center">
 				<div className="form_wrapper col-12 col-md-6 me-md-2 p-5 d-flex flex-column">
 					<p className="p11">Join the network</p>

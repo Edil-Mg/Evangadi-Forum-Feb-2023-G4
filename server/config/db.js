@@ -9,6 +9,7 @@ const user = process.env.DB_USER;
 const password = process.env.DB_PASSWORD;
 console.log(port);
 
+
 export const connection = mysql.createConnection({
 	host,
 	port,

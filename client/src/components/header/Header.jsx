@@ -40,13 +40,15 @@ const Header = () => {
 				</div>
 
 				<div className="linkcontainer ">
-					<ul className="d-flex gap-5">
+					<ul className="nav_row d-flex gap-5">
 						<li>
 							<Link to="/" id="onelink">
-								home
+								Home
 							</Link>
 						</li>
-						<li>how it work</li>
+						<li>
+							<a href="#">How it Works</a>
+						</li>
 						{user ? (
 							<>
 								<h6 onClick={handleClick}>

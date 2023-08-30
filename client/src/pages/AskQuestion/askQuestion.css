@@ -4,8 +4,8 @@
 .question_form {
 	min-height: 500px;
 	border-radius: 15px;
-	background: #ffffff;
-	box-shadow: 5px 5px 10px #e8e8e8, -5px -5px 10px #ffffff;
+	background: #f1f5ff;
+	box-shadow: 3px 3px 5px #e8e8e8, -2px -2px 5px #ffffff;
 }
 .question_title{
 	padding: 15px 25px;

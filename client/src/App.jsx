@@ -24,42 +24,94 @@ function App() {
 
 
   return (
-    <div className="App">
+		<div
+			className="App"
+			
+		>
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<>
+							<Header /> <Home />
+						</>
+					}
+				/>
+				<Route
+					path="/forgetpassword"
+					element={
+						<>
+							<Forget_password />
+						</>
+					}
+				/>
+				<Route
+					path="/code"
+					element={
+						<>
+							<Code_enter />
+						</>
+					}
+				/>
+				<Route
+					path="/newPassword"
+					element={
+						<>
+							<NewPassword />
+						</>
+					}
+				/>
+				<Route
+					path="/login"
+					element={
+						<>
+							<Header /> <Signin />
+						</>
+					}
+				/>
+				<Route
+					path="/signup"
+					element={
+						<>
+							<Signup />
+						</>
+					}
+				/>
 
-      <Routes>
-        <Route path='/' element={<><Header /> <Home /></>} />
-        <Route path='/forgetpassword' element={<><Forget_password /></>} />
-        <Route path='/code' element={<><Code_enter /></>} />
-        <Route path='/newPassword' element={<><NewPassword /></>} />
-        <Route path='/login' element={<>
-                               <Header /> <Signin />
-        </>} />
-        <Route path='/signup' element={<>
-                                <Signup />
-                              </>} />
-        
-        <Route path='/AskQuestion' element={<>
-                               <Header /> <AskQuestion />
-                              </>} />
-        <Route path='/profile' element={<>
-                                <Header /><Profile />
-                              </>} />
+				<Route
+					path="/AskQuestion"
+					element={
+						<>
+							<Header /> <AskQuestion />
+						</>
+					}
+				/>
+				<Route
+					path="/profile"
+					element={
+						<>
+							<Header />
+							<Profile />
+						</>
+					}
+				/>
 
-       
-        <Route path='/SingleQuestion/:id' element={<>
-                                <Header /><SingleQuestion />
-                              </>} />
+				<Route
+					path="/SingleQuestion/:id"
+					element={
+						<>
+							<Header />
+							<SingleQuestion />
+						</>
+					}
+				/>
 
-        <Route path="/questions/:id" element={<SingleQuestion />} />
+				<Route path="/questions/:id" element={<SingleQuestion />} />
+			</Routes>
 
-      </Routes>
-
-      <Footer />
-
-
-    </div>
-
-  )
+			<Footer />
+		</div>
+	);
 }
 
 export default App
