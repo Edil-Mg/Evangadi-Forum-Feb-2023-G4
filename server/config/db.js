@@ -1,4 +1,4 @@
-import mysql from 'mysql2';
+import mysql from "mysql2";
 // const port = process.env.DB_PORT;
 // const host = process.env.DB_HOST;
 // const database = process.env.DB_NAME;
@@ -6,25 +6,23 @@ import mysql from 'mysql2';
 // const password = process.env.DB_PASSWORD;
 // console.log(port);
 
-const port = 8888;
-const host = 'localhost';
-const database = 'Evangadi';
-const user = 'Evangadi';
-const password = '1234';
+// const port = 8888;
+const host = "localhost";
+const database = "EvangadiForemGp4";
+const user = "EvangadiForemGp4";
+const password = "EvangadiForemGp4";
 // console.log(port);
 
 export const connection = mysql.createConnection({
-     host,
-    port,
-    database,
-    user,
-    password,
-    socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock"
-    
+	host,
+	// port,
+	database,
+	user,
+	password,
+	// socketPath: "/Applications/MAMP/tmp/mysql/mysql.sock",
 });
 
-connection.connect((error) => { 
-    if (error) console.log(error);
-     console.log('Connected to the database as ID: ' + connection.threadId);
-})
-
+connection.connect((error) => {
+	if (error) console.log(error);
+	console.log("Connected to the database as ID: " + connection.threadId);
+});
