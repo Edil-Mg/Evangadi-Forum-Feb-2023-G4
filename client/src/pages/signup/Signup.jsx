@@ -29,17 +29,17 @@ const [{user }, dispatch] = useStateValue();
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log(form);
+     // console.log(form);
         if (1) {
     // if (validateForm()) {
       try {
         axios.defaults.withCredentials = true;
         const response = await axios.post(`/api/users/createuser`,form);
         const data = response.data;
-        console.log(response);
+       // console.log(response);
         if (data) { 
           alert(data.msg);
-          navigate('/landing')
+          navigate('/login')
         }
         
       } catch (error) {
@@ -140,7 +140,8 @@ const [{user }, dispatch] = useStateValue();
               type='password'
               placeholder="confim Password"
             />
-            <span className="showHide">
+             <span className="showHide">
+               <br />
               {/* <Icon icon={icon} size={20} onClick={HandleIconChange} /> */}
             </span>
             <button className="btnSign">Agree and Join</button>

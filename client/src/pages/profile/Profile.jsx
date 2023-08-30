@@ -16,12 +16,13 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    if (!user) { 
+    if (!user) {
       navigate('/login');
     }
     // console.log(user);
 
-  }, [navigate])
+  }, [navigate]);
+
   useEffect(() => {
     const id = { id: user.user.id };
     const fetchData = async () => {
@@ -67,7 +68,7 @@ const Profile = () => {
           <div className="profile-picture">
             <img className='avatar'
               width="300px"
-              src={userData.image_url!=null ? userData.image_url : profile }
+              src={userData.image_url != null ? userData.image_url : profile }
               alt="Profile Picture"
             />
           <form id="myForm" encType="multipart/form-data">

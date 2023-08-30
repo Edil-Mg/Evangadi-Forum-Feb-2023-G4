@@ -16,7 +16,7 @@ const Signin = () => {
     if (user) { 
       navigate('/');
     }
-    console.log(user);
+   // console.log(user);
 
   }, [navigate])  
   

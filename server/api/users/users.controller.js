@@ -33,8 +33,8 @@ const userController = {
        
         // validate password using regular expression
           const validationResult = validatePassword(password);
-          console.log(validationResult);
-          console.log(validationResult.valid);
+          // console.log(validationResult);
+          // console.log(validationResult.valid);
         if (!validationResult.valid)
             return res
                 .status(400)
@@ -136,7 +136,8 @@ const userController = {
                 return res
                     .status(404)
                     .json({ msg: "Invalid Credentials incorrect password" })
-            const token = jwt.sign({ id: results.user_id, username: results.user_name }, process.env.JWT_SECRET, { expiresIn: "30m" });
+           //token geneate 
+          const token = jwt.sign({ id: results.user_id, username: results.user_name }, process.env.JWT_SECRET, { expiresIn: "30m" });
             return res.json({
                 token,
                 user: {
