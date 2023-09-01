@@ -4,6 +4,7 @@ import "./signup.css";
 import { useStateValue } from "../../utility/stateprovider";
 import axios from "../../utility/axios";
 import About from "../../components/about/About";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Signup = () => {
 	const [{ user }, dispatch] = useStateValue();
@@ -51,16 +52,21 @@ const Signup = () => {
 			}
 		}
 	};
+	const [passwordVisible, setPasswordVisible] = useState(false);
+
+	const togglePasswordVisibility = () => {
+		setPasswordVisible(!passwordVisible);
+	};
 
 	return (
 		<div
 			className="container-fluid sign_page"
-			style={{
-				backgroundImage: `url(https://evangadi-forum-group-2-jan-2023.netlify.app/assets/bg-svg-f-d64add7e.svg)`,
-				// backgroundSize: "cover",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "105% 100%",
-			}}
+			// style={{
+			// 	backgroundImage: `url(https://evangadi-forum-group-2-jan-2023.netlify.app/assets/bg-svg-f-d64add7e.svg)`,
+			// 	// backgroundSize: "cover",
+			// 	backgroundRepeat: "no-repeat",
+			// 	backgroundSize: "105% 100%",
+			// }}
 		>
 			<div className="container d-md-flex mx-auto py-5 align-items-center">
 				<div className="form_wrapper col-12 col-md-6 me-md-2 p-5 d-flex flex-column">
@@ -119,6 +125,12 @@ const Signup = () => {
 							type="password"
 							placeholder="Password"
 						/>
+						<span
+							className={`password-toggle ${passwordVisible ? "visible" : ""}`}
+							onClick={togglePasswordVisibility}
+						>
+							{passwordVisible ? "" : ""}
+						</span>
 
 						<input
 							className="in11"
@@ -130,6 +142,12 @@ const Signup = () => {
 						<span className="showHide">
 							<br />
 							{/* <Icon icon={icon} size={20} onClick={HandleIconChange} /> */}
+						</span>
+						<span
+							className={`password-toggle ${passwordVisible ? "visible" : ""}`}
+							onClick={togglePasswordVisibility}
+						>
+							{passwordVisible ? "" : ""}
 						</span>
 						<button className="btnSign">Agree and Join</button>
 					</form>

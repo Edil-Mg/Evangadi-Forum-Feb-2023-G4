@@ -23,3 +23,5 @@ connection.connect((error) => {
 	if (error) console.log(error);
 	console.log("Connected to the database as ID: " + connection.threadId);
 });
+
+

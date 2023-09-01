@@ -30,3 +30,6 @@ hr {
 	font-size: 20px;
 	font-weight: 500;
 }
+.link_hover:hover {
+	color: #ff8500;
+}

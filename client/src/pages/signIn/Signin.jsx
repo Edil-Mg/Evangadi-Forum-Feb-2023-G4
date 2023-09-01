@@ -69,12 +69,12 @@ const Signin = () => {
 	return (
 		<div
 			className="container-fluid login_page"
-			style={{
-				backgroundImage: `url(https://evangadi-forum-group-2-jan-2023.netlify.app/assets/bg-svg-f-d64add7e.svg)`,
-				// backgroundSize: "cover",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "105% 100%",
-			}}
+			// style={{
+			// 	backgroundImage: `url(https://evangadi-forum-group-2-jan-2023.netlify.app/assets/bg-svg-f-d64add7e.svg)`,
+			// 	// backgroundSize: "cover",
+			// 	backgroundRepeat: "no-repeat",
+			// 	backgroundSize: "105% 100%",
+			// }}
 		>
 			<div className="container py-5 d-md-flex justify-content-between login_container">
 				<div className="main col-12 col-md-6 me-md-2 p-5 d-flex flex-column justify-content-center">
