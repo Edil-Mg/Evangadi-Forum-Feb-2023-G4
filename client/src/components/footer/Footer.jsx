@@ -7,7 +7,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 const Footer = () => {
 	return (
 		<div className="Footer container-fluid p-5">
-			<div className="d-flex justify-content-center">
+			{/* <div className="d-flex justify-content-center"> */}
+			<div className="d-flex flex-column flex-lg-row justify-content-center">
 				<div className="row ">
 					<div className="row">
 						<img
